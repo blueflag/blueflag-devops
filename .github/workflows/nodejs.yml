@@ -43,6 +43,8 @@ jobs:
         NPM_CONFIG_USERCONFIG: $GITHUB_WORKSPACE/.npmrc
         NODE_ENV: "development"
     - name: Build Packages
-      run: yarn run test-all --since=origin/master
+      run: yarn run build --since=origin/master
     - name: Linting
-      run: yarn run lint --since=origin/master
+      run: yarn run _lint --since=origin/master
+    - name: Test Packages
+      run: yarn run test-all --since=origin/master
