@@ -1,6 +1,8 @@
 {
     "presets": [
-        ["blueflag", {"browser": true, "library": true}]
+        [
+            "@blueflag/babel-preset-blueflag", {"browser": true, "library": true}
+        ]
     ],
     "ignore": ["./lib"]
 }

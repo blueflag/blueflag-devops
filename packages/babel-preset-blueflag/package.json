@@ -1,5 +1,5 @@
 {
-  "name": "babel-preset-blueflag",
+  "name": "@blueflag/babel-preset-blueflag",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
