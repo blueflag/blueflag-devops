@@ -16,6 +16,7 @@ jobs:
       cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Checkout to GITHUB_HEAD_REF (lerna --since requires this)
       run: git checkout $GITHUB_HEAD_REF
     - uses: actions/setup-node@v3
