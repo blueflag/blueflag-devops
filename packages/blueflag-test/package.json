@@ -30,6 +30,13 @@
     "test": "yarn jest",
     "test-all": "yarn lint && yarn flow && yarn test"
   },
+  "devDependencies": {
+    "babel-eslint": "^8.2.5",
+    "eslint": "^5.0.1",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-jest": "^22.0.0",
+    "eslint-plugin-react": "^7.10.0"
+  },
   "dependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
