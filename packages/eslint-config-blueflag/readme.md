@@ -11,8 +11,8 @@ npm install eslint-config-blueflag
 // .eslintrc
 {
     "extends": [
-        "eslint-config-blueflag",
-        "eslint-config-blueflag/flow.js" // With flow types
+        "@blueflag/eslint-config-blueflag",
+        "@blueflag/eslint-config-blueflag/flow.js" // With flow types
     ]
 }
 ```

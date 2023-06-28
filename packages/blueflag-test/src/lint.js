@@ -18,9 +18,9 @@ export default function Lint({monorepo, singleFile}: Object): Object {
         baseConfig: {
             baseDirectory: process.cwd(),
             extends: [
-                "eslint-config-blueflag",
-                "eslint-config-blueflag/react",
-                "eslint-config-blueflag/flow"
+                "@blueflag/eslint-config-blueflag",
+                "@blueflag/eslint-config-blueflag/react",
+                "@blueflag/eslint-config-blueflag/flow"
             ]
         }
     });
