@@ -1,9 +1,0 @@
-{
-    "presets": [
-        ["blueflag", {"browser": true, "library": true}]
-    ],
-    "plugins": [
-        "@babel/plugin-proposal-export-default-from",
-        ["babel-plugin-extract-flow-types", {"srcDir": "src", "outDir": "lib"}]
-    ]
-}

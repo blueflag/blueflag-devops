@@ -1,0 +1,44 @@
+name: CI
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: [18, 20]
+    permissions:
+      packages: read, write
+      id-token: write
+      contents: write
+    concurrency:
+      # pushes to same branch, to cancel out old actions
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.version }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.version }}
+    - name: Setup credentials for @blueflag and @92green npm
+      run: ./scripts/setup-npm.sh
+      shell: bash
+      env:
+        BLUEFLAG_GITHUB_PACKAGES_AUTH_TOKEN: ${{ secrets.BLUEFLAG_GITHUB_PACKAGES_AUTH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Set Yarn Version
+      run: yarn policies set-version 1.22.19
+    - name: Yarn Install
+      run: yarn install
+      env:
+        NPM_CONFIG_USERCONFIG: $GITHUB_WORKSPACE/.npmrc
+        NODE_ENV: "development"
+    - name: Yarn Install
+      run: yarn lerna bootstrap --since=origin/master
+      env:
+        NPM_CONFIG_USERCONFIG: $GITHUB_WORKSPACE/.npmrc
+        NODE_ENV: "development"
+    - name: Build Packages
+      run: yarn run test-all --since=origin/master
+    - name: Linting
+      run: yarn run lint --since=origin/master
