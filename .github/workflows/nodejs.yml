@@ -2,12 +2,12 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  test:
     strategy:
       matrix:
         version: [18, 20]
     permissions:
-      packages: read, write
+      packages: read
       id-token: write
       contents: write
     concurrency:
